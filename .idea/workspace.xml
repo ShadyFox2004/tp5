@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e568db9-5deb-4717-97c8-22100279992d" name="Changes" comment="gitkeep">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="0e568db9-5deb-4717-97c8-22100279992d" name="Changes" comment="sa devrai marcher la">
+      <change beforePath="$PROJECT_DIR$/test/tp5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tp5.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +27,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="jdk.selected.JAVA_MODULE" value="16" />
+    <property name="jdk.selected.PLUGIN_MODULE" value="IntelliJ IDEA IU-213.7172.25" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -63,6 +64,7 @@
       <workItem from="1650902562328" duration="1225000" />
       <workItem from="1650903811644" duration="1217000" />
       <workItem from="1650905153941" duration="299000" />
+      <workItem from="1650905952379" duration="314000" />
     </task>
     <task id="LOCAL-00001" summary="gitkeep">
       <created>1650903913418</created>
@@ -78,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650904458735</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="sa devrai marcher la">
+      <created>1650906128550</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1650906128550</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -97,7 +106,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gitkeep" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitkeep" />
+    <MESSAGE value="sa devrai marcher la" />
+    <option name="LAST_COMMIT_MESSAGE" value="sa devrai marcher la" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
