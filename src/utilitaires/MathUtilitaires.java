@@ -117,7 +117,12 @@ public class MathUtilitaires
     {
         Set<Integer> tabVals = new HashSet<Integer>();
         for(int i = 0; i < pVal; i++){
-            if(estPremier(i)){tabVals.add(i);}
+            if(estPremier(i)){
+                tabVals.add(i);
+            }
+        }
+        if(tabVals.size()==0){
+            tabVals = null;
         }
         return new TreeSet<Integer>(tabVals);
     }
