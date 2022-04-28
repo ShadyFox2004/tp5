@@ -11,7 +11,6 @@ Cryptographic encription framework.
 ## How to contribute
 From now on, the only way to contribute will be through pull request.
 To first contribute, you need to fork the project on your own. 
-I will only accept pull request created on the devlop branch.
 Only **tested** code will be allowed in the project.
 Only **non conflicting** pullrequest will be allowed to merge. 
 Colaborators are a thing of the past cause they create too much conflicts in the core files.
