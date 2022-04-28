@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e568db9-5deb-4717-97c8-22100279992d" name="Changes" comment="sa devrai marcher la">
-      <change beforePath="$PROJECT_DIR$/test/tp5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tp5.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/FichierUtilitairesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/MathUtilitairesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/VecteurDeCaracteresTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/structures/VecteurDeCaracteres.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structures/VecteurDeCaracteres.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utilitaires/FichierUtilitaires.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilitaires/FichierUtilitaires.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utilitaires/MathUtilitaires.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilitaires/MathUtilitaires.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,13 +29,19 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="16" />
     <property name="jdk.selected.PLUGIN_MODULE" value="IntelliJ IDEA IU-213.7172.25" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -39,8 +51,22 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="tests" />
+    </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -65,6 +91,7 @@
       <workItem from="1650903811644" duration="1217000" />
       <workItem from="1650905153941" duration="299000" />
       <workItem from="1650905952379" duration="314000" />
+      <workItem from="1651160231375" duration="675000" />
     </task>
     <task id="LOCAL-00001" summary="gitkeep">
       <created>1650903913418</created>
@@ -103,6 +130,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gitkeep" />
