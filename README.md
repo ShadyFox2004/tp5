@@ -1,5 +1,5 @@
 ---
-tags: #school
+tags: school
 ---
 
 # TP5
