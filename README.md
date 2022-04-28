@@ -1,4 +1,6 @@
-#school
+---
+tags: #school
+---
 
 # TP5
 
