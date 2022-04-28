@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e568db9-5deb-4717-97c8-22100279992d" name="Changes" comment="sa devrai marcher la">
-      <change afterPath="$PROJECT_DIR$/src/tests/FichierUtilitairesTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/MathUtilitairesTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/VecteurDeCaracteresTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/structures/VecteurDeCaracteres.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structures/VecteurDeCaracteres.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utilitaires/FichierUtilitaires.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilitaires/FichierUtilitaires.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utilitaires/MathUtilitaires.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilitaires/MathUtilitaires.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tp5.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,13 +54,60 @@
       <recent name="tests" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.MathUtilitairesTest.estPremier">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MathUtilitairesTest.estPremier" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tp5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.MathUtilitairesTest" />
+      <option name="METHOD_NAME" value="estPremier" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MathUtilitairesTest.modulo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tp5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.MathUtilitairesTest" />
+      <option name="METHOD_NAME" value="modulo" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VecteurDeCaracteresTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tp5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.VecteurDeCaracteresTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -78,6 +124,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MathUtilitairesTest.estPremier" />
+        <item itemvalue="JUnit.MathUtilitairesTest.modulo" />
+        <item itemvalue="JUnit.VecteurDeCaracteresTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -130,7 +183,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gitkeep" />
@@ -140,5 +192,10 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/tp5$MathUtilitairesTest_modulo.ic" NAME="MathUtilitairesTest.modulo Coverage Results" MODIFIED="1651080476173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.*</FILTER>
+    </SUITE>
   </component>
 </project>

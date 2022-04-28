@@ -1,6 +1,9 @@
 package utilitaires;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * Classe utilitaires pour les calculs mathématiques
@@ -48,7 +51,16 @@ public class MathUtilitaires
     // TODO modulo - Compléter le code de la méthode
     public static int modulo(int pVal, int pMod) throws ArithmeticException
     {
-        return 0;
+        double division = pVal / pMod;
+        int divisionModulo = pVal%pMod;
+        int division_tronque;
+        if(divisionModulo == 0 || division > 0){
+            division_tronque = (int) Math.floor(division);
+        }
+        else{
+            division_tronque = (int)(division -1);
+        }
+        return pVal - (division_tronque * pMod);
     }
 
     /**
@@ -63,7 +75,19 @@ public class MathUtilitaires
     // TODO diviseursDe - Compléter le code de la méthode
     public static SortedSet<Integer> diviseursDe(int pVal)
     {
-        return null;
+        Set<Integer> diviseur = new HashSet<Integer>();
+        int end = (int) Math.sqrt(Math.abs(pVal));
+        for(int i = 1; i< end; i++)
+        {
+            if( modulo(pVal,i) == 0 )
+            {
+                diviseur.add(i);
+            }
+
+        }
+        diviseur.add(Math.abs(pVal));
+
+        return new TreeSet<Integer>(diviseur);
     }
 
     /**
@@ -78,7 +102,7 @@ public class MathUtilitaires
     // TODO estPremier - Compléter le code de la méthode
     public static boolean estPremier(int pVal)
     {
-        return true;
+        return diviseursDe(pVal).size() == 2;
     }
 
     /**
@@ -91,7 +115,11 @@ public class MathUtilitaires
     // TODO xPremier - Compléter le code de la méthode
     public static SortedSet<Integer> xPremier(int pVal)
     {
-        return null;
+        Set<Integer> tabVals = new HashSet<Integer>();
+        for(int i = 0; i < pVal; i++){
+            if(estPremier(i)){tabVals.add(i);}
+        }
+        return new TreeSet<Integer>(tabVals);
     }
 
     /**
