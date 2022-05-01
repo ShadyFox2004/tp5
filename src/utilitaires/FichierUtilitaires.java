@@ -74,26 +74,24 @@ public class FichierUtilitaires
      * dans le fichier.
      */
     // TODO lireDictionnaire - Compléter le code de la méthode
-    public static SortedSet<String> lireDictionnaire(File nomDic)
+    public static SortedSet<String> lireDictionnaire(File nomDic) throws FileNotFoundException
     {
         SortedSet<String> dict = new TreeSet<>();
-        StringTokenizer mot;
-
+        StringTokenizer token;
+        String mots;
         try
         {
-            BufferedReader buff = new BufferedReader(new FileReader(nomDic));
-
-            while (buff.readLine() != null)
+            BufferedReader entree = new BufferedReader(new FileReader(nomDic));
+            mots = entree.readLine();
+            while (mots != null)
             {
-                mot = new StringTokenizer(buff.readLine().toLowerCase().trim(), " ");
-                if (!dict.add(mot.nextToken()))
+                token = new StringTokenizer(mots.trim().toLowerCase(), " ");
+                if (!dict.contains(token.toString()))
                 {
-                    dict.add(mot.nextToken());
+                    dict.add(token.toString());
                 }
 
             }
-
-            buff.close();
         } catch (FileNotFoundException e)
         {
             e.printStackTrace();
@@ -102,6 +100,7 @@ public class FichierUtilitaires
             e.printStackTrace();
         }
         return dict;
+
     }
 
     /**
