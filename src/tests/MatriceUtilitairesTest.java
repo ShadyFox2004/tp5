@@ -27,14 +27,15 @@ public class MatriceUtilitairesTest {
     @Test
     public void getMatTranspose() {
         int[][] matT = MatriceUtilitaires.getMatTranspose(mat2);
-        assertEquals("[1, 4, 7]\n[2, 5, 8]\n[3, 6, 9]\n", MatriceUtilitaires.toStringMat(matT));
+        assertEquals("[1, 4, 7]\n[2, 5, 8]\n[3, 6, 9]\n", 
+                     MatriceUtilitaires.toStringMat(matT));
 
 
     }
 
     @Test
     public void getMatMultScalaire() {
-        int[][] mat =MatriceUtilitaires.getMatMultScalaire(mat1,2);
+        int[][] mat = MatriceUtilitaires.getMatMultScalaire(mat1,2);
         assertTrue(MatriceUtilitaires.toStringMat(mat).equals("[2, 4]\n[6, 8]\n"));
         mat = MatriceUtilitaires.getMatMultScalaire(mat2, -1.1f);
         assertTrue(MatriceUtilitaires.toStringMat(mat).equals("[-2, -3, -4]\n[-5, -6, -7]\n[-8, -9, -10]\n"));
@@ -42,7 +43,7 @@ public class MatriceUtilitairesTest {
 
     @Test
     public void getMatModuloX() {
-        int[][] mat =MatriceUtilitaires.getMatModuloX(mat1,2);
+        int[][] mat = MatriceUtilitaires.getMatModuloX(mat1,2);
         assertTrue(MatriceUtilitaires.toStringMat(mat).equals("[1, 0]\n[1, 0]\n"));
         mat = MatriceUtilitaires.getMatModuloX(mat2, 5);
         assertTrue(MatriceUtilitaires.toStringMat(mat).equals("[1, 2, 3]\n[4, 0, 1]\n[2, 3, 4]\n"));
@@ -50,7 +51,7 @@ public class MatriceUtilitairesTest {
 
     @Test
     public void getDeterminant() {
-        int det =MatriceUtilitaires.getDeterminant(mat1);
+        int det = MatriceUtilitaires.getDeterminant(mat1);
         assertEquals(-2,det);
         det = MatriceUtilitaires.getDeterminant(mat2);
         assertEquals(0,det);
@@ -66,20 +67,24 @@ public class MatriceUtilitairesTest {
     @Test
     public void getMatCofacteurs() {
         int[][] matCo = MatriceUtilitaires.getMatCofacteurs(mat1);
-        assertEquals("[4, -3]\n[-2, 1]\n", MatriceUtilitaires.toStringMat(matCo));
+        assertEquals("[4, -3]\n[-2, 1]\n",
+            MatriceUtilitaires.toStringMat(matCo));
         matCo = MatriceUtilitaires.getMatCofacteurs(mat4);
-        assertEquals("[-3, 6, -3]\n[6, -12, 6]\n[-3, 6, -3]\n", MatriceUtilitaires.toStringMat(matCo));
+        assertEquals("[-3, 6, -3]\n[6, -12, 6]\n[-3, 6, -3]\n",
+            MatriceUtilitaires.toStringMat(matCo));
     }
 
     @Test
     public void getMatAdjointe() {
         int[][] matA = MatriceUtilitaires.getMatAdjointe(mat1);
-        assertEquals("[4, -2]\n[-3, 1]\n", MatriceUtilitaires.toStringMat(matA));
+        assertEquals("[4, -2]\n[-3, 1]\n",
+            MatriceUtilitaires.toStringMat(matA));
         matA = MatriceUtilitaires.getMatAdjointe(mat2);
-        assertEquals("[-3, 6, -3]\n[6, -12, 6]\n[-3, 6, -3]\n",MatriceUtilitaires.toStringMat(matA));
+        assertEquals("[-3, 6, -3]\n[6, -12, 6]\n[-3, 6, -3]\n",
+            MatriceUtilitaires.toStringMat(matA));
         matA = MatriceUtilitaires.getMatAdjointe(mat3);
         assertEquals("[0, 0, 0, 0]\n[0, 0, 0, 0]\n[0, 0, 0, 0]\n[0, 0, 0, 0]\n",
-                MatriceUtilitaires.toStringMat(matA));
+            MatriceUtilitaires.toStringMat(matA));
     }
 
 //    @Test
