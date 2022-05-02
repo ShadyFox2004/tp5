@@ -6,7 +6,7 @@ import java.util.SortedSet;
 /**
  * Classe utilitaires pour la gestion des matrices carrées
  *
- * @author Vos noms
+ * @author Henri Baillargeon
  */
 public class MatriceUtilitaires
 {
@@ -27,10 +27,22 @@ public class MatriceUtilitaires
 	 *
 	 * @return la chaîne de caractères
 	 */
-	// TODO toStringMat - Compléter le code de la méthode
+
 	public static String toStringMat(int[][] mat)
 	{
-		return "";
+		String str = "";
+		for(int i = 0; i < mat.length; i++){
+			str += "[";
+			for(int j = 0; j < mat[0].length; j++){
+				str += mat[i][j];
+
+				if(j < mat[0].length- 1) {
+					str += ", ";
+				}
+			}
+			str += "]\n";
+		}
+		return str;
 	}
 
 	/**
@@ -44,10 +56,16 @@ public class MatriceUtilitaires
 	 *
 	 * @return la matrice carrée M X N transposée
 	 */
-	// TODO getMatTranspose - Compléter le code de la méthode
-	public static int[][] getMatTranspose(int[][] mat)
-	{
-		return null;
+
+	public static int[][] getMatTranspose(int[][] mat) {
+		int[][] Tmat = null;
+		Tmat = new int[mat[0].length][mat.length];
+		for (int i = 0; i < mat.length; i++) {
+			for (int j = 0; j < mat[0].length; j++) {
+				Tmat[j][i] = mat[i][j];
+			}
+		}
+		return Tmat;
 	}
 
 	/**
@@ -65,10 +83,41 @@ public class MatriceUtilitaires
 	 * @return la matrice carrée (N-1) X (N-1) mineure résultante
 	 *
 	 */
-	// TODO getMatMineur - Compléter le code de la méthode
+
 	private static int[][] getMatMineur(int[][] mat, int ligne, int col)
 	{
-		return null;
+		int iM = 0;
+		int jM = 0;
+		int limiteL = mat.length;
+		int limiteC = mat[0].length;
+		int[][] mineur = new int[mat.length -1][mat[0].length -1];
+
+		//si la derniere ligne ou colonne est celle choisie, nous devons efficacement les sauté
+		if(ligne == mat.length-1 || mat.length == 2) {
+			limiteL = mat.length-1;
+		}
+		if(col == mat[0].length-1 || mat[0].length == 2) {
+			limiteC = mat[0].length -1;
+		}
+
+		//construction de le matrice mineur. si le compteur de ligne est égale a la ligne prise en argument
+		//il vas la sauté. c,est la même chose pour les colonnes
+		for(int i = 0; i < limiteL; i++){
+			if(i == ligne){
+				i++;
+			}
+			for(int j = 0; j < limiteC; j++){
+				if(j == col){
+					j++;
+				}
+				mineur[iM][jM] = mat[i][j];
+				jM++;
+
+			}
+			jM = 0;
+			iM++;
+		}
+		return mineur;
 	}
 
 	/**
@@ -81,10 +130,16 @@ public class MatriceUtilitaires
 	 *
 	 * @return la matrice résultante de la multiplication avec un scalaire
 	 */
-	// TODO getMatMultScalaire - Compléter le code de la méthode
+
 	public static int[][] getMatMultScalaire(int[][] mat, float scalaire)
 	{
-		return null;
+		int[][] matB = new int[mat.length][mat[0].length];
+		for(int i = 0; i < mat.length; i ++){
+			for(int j = 0; j < mat[0].length; j++){
+				matB[i][j] = (int) Math.floor(mat[i][j]*scalaire);
+			}
+		}
+		return matB;
 	}
 
 	/**
@@ -97,10 +152,15 @@ public class MatriceUtilitaires
 	 *
 	 * @return la matrice résultante de l'application d'un modulo
 	 */
-	// TODO getMatModuloX - Compléter le code de la méthode
 	public static int[][] getMatModuloX(int[][] mat, int mod)
 	{
-		return null;
+		int[][] matB = new int[mat.length][mat[0].length];
+		for(int i = 0; i < mat.length; i ++){
+			for(int j = 0; j < mat[0].length; j++){
+				matB[i][j] = MathUtilitaires.modulo(mat[i][j],mod);
+			}
+		}
+		return matB;
 	}
 
 	/**
@@ -115,11 +175,38 @@ public class MatriceUtilitaires
 	 *
 	 * @return le déterminant de la matrice.
 	 */
-	// TODO getDeterminant - MANDAT 2 - Compléter le code de la méthode
 	public static int getDeterminant(int[][] mat)
 	{
-		return 0;
+		int det = 0;
+		if(mat.length > 1) {
+			for (int j = 0; j < mat.length; j++) {
+				//recursion puisque la methode getCofact appeal de nouveau getDeterminant
+				//Il est bien de savoir que le cofacteur de Matrice 2x2 ne sera pas utiliser
+				// car il ne respecte pas la grandeur minimale. nous passeron donc au 'else{}'
+				det += getCofact(0,j,mat) * mat[0][j];
+				//det += symbole(0, j) * mat[0][j] * getDeterminant(getMatMineur(mat, 0, j));
+			}
+		}
+		else{
+			det = mat[0][0];
+		}
+		return det;
 	}
+
+	/**
+	 * donne le cofacteur (-1)^(i+j)*|M|
+	 * ou |M| = au determinant de la matrice mineur
+	 *
+	 * tres utile pour trouver le determinant d'une matrice et pour trouver la Matrice cofecteur
+	 * @param i rang
+	 * @param j colonne
+	 * @param mat matrice carree qui sera utilisee
+	 * @return le cofacteur de la valeur de la matrice a la position (i, j)
+	 */
+	private static int getCofact(int i,int j, int[][] mat){
+		return (int)(Math.pow(-1,(i +j)) * getDeterminant(getMatMineur(mat, i, j)));
+	}
+
 
 	/**
 	 * Retourne la matrice carrée des cofacteurs N X N d'une matrice carrée N X
@@ -129,10 +216,15 @@ public class MatriceUtilitaires
 	 *
 	 * @return la matrice carrée des cofacteurs de la matrice d'origine
 	 */
-	// TODO getMatCofacteurs - MANDAT 2 - Compléter le code de la méthode
 	public static int[][] getMatCofacteurs(int[][] mat)
 	{
-		return null;
+		int[][] cmat = new int[mat.length][mat[0].length];
+		for(int i = 0; i < mat.length; i++){
+			for(int j = 0; j < mat[0].length; j++){
+				cmat[i][j] = getCofact(i,j,mat);
+			}
+		}
+		return cmat;
 	}
 
 	/**
@@ -144,10 +236,9 @@ public class MatriceUtilitaires
 	 *
 	 * @return la matrice carrée N X N adjointe
 	 */
-	// TODO getMatAdjointe - MANDAT 2 - Compléter le code de la méthode
 	public static int[][] getMatAdjointe(int[][] mat)
 	{
-		return null;
+		return getMatTranspose(getMatCofacteurs(mat));
 	}
 
 	/**
