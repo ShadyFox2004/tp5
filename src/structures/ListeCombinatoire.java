@@ -180,30 +180,29 @@ public class ListeCombinatoire
             // ou les valeurs de trop
             pCombinaisonCourante = pCombinaisonCourante.subList(0, longCombinaisonCourante);
         }
+    }
 
-        /**
-         * Permet de construire une chaîne de caractères structurée pour afficher
-         * les infos d'un objet ListeCombinatoire.
-         *
-         * Évolue selon le développement...
-         *
-         *
-         * <pre>
-         * Exemple de sortie voulue:
-         *
-         * Limite de l'ensemble : [1, 20]
-         * Longueur combinaison : 4
-         * Ensemble : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-         * Voici les 4845 combinaisons : [[1, 2, 3, 4], [1, 2, 3, 5], [1, 2, 3, 6], [1, 2, 3, 7], ... , [16, 18, 19, 20], [17, 18, 19, 20]]
-         *
-         * </pre>
-         *
-         */
-        // TODO toString - Compléter le code de la méthode
-        @Override
-        public String toString()
-        {
-            return "";
-        }
+    /**
+     * Permet de construire une chaîne de caractères structurée pour afficher
+     * les infos d'un objet ListeCombinatoire.
+     * <p>
+     * Évolue selon le développement...
+     *
+     *
+     * <pre>
+     * Exemple de sortie voulue:
+     *
+     * Limite de l'ensemble : [1, 20]
+     * Longueur combinaison : 4
+     * Ensemble : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+     * Voici les 4845 combinaisons : [[1, 2, 3, 4], [1, 2, 3, 5], [1, 2, 3, 6], [1, 2, 3, 7], ... , [16, 18, 19, 20], [17, 18, 19, 20]]
+     *
+     * </pre>
+     */
+    // TODO toString - Compléter le code de la méthode
+    @Override
+    public String toString()
+    {
+        return "";
     }
 }
