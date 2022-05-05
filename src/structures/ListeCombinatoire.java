@@ -120,9 +120,7 @@ public class ListeCombinatoire {
      */
     // TODO genererEnsembleValeurs - Compléter le code de la méthode
     public List<Integer> genererEnsembleValeurs() {
-        List<Integer> liste = new ArrayList<>();
-
-        return liste;
+        return null;
     }
 
     /**
