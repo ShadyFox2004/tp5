@@ -6,12 +6,12 @@ import utilitaires.MathUtilitaires;
 
 import java.util.SortedSet;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 /**
  * Cette classe test la classe MathUtilitaire
  *
- * @author Samuel Nguyen-Phok
+ * @author Samuel Nguyen-Phok et Henri Baillargeon
  */
 public class MathUtilitairesTest
 {
@@ -42,24 +42,28 @@ public class MathUtilitairesTest
     @Test
     public void diviseursDe()
     {
+        assertEquals("[1, 2, 3, 4, 6, 12]", MathUtilitaires.diviseursDe(12).toString());
+        assertEquals("[1, 2, 4, 5, 10, 20]", math.diviseursDe(20).toString());
+        assertEquals( "[1, 3, 11, 33]", math.diviseursDe(33).toString());
+        assertEquals("[1, 2, 13, 26]", math.diviseursDe(26).toString());
 
     }
 
     @Test
     public void estPremier()
     {
-        assertEquals(false, math.estPremier(1));
-        //assertEquals(true, math.estPremier(2));
-        assertEquals(true, math.estPremier(3));
-        assertEquals(false, math.estPremier(4));
-        assertEquals(true, math.estPremier(5));
-        assertEquals(false, math.estPremier(6));
-        assertEquals(true, math.estPremier(7));
-        assertEquals(false, math.estPremier(8));
-        assertEquals(false, math.estPremier(9));
-        assertEquals(false, math.estPremier(10));
-        assertEquals(true, math.estPremier(23));
-        assertEquals(false, math.estPremier(100));
+        assertFalse(math.estPremier(1));
+        assertTrue(math.estPremier(2));
+        assertTrue(math.estPremier(3));
+        assertFalse(math.estPremier(4));
+        assertTrue(math.estPremier(5));
+        assertFalse(math.estPremier(6));
+        assertTrue(math.estPremier(7));
+        assertFalse(math.estPremier(8));
+        assertFalse(math.estPremier(9));
+        assertFalse(math.estPremier(10));
+        assertTrue(math.estPremier(23));
+        assertFalse(math.estPremier(100));
     }
 
     @Test
@@ -76,12 +80,23 @@ public class MathUtilitairesTest
     @Test
     public void PGCD()
     {
+        assertEquals(6, MathUtilitaires.PGCD(366, 60));
+        assertEquals(2, math.PGCD(-24, 2));
+        assertEquals(24, math.PGCD(24,0));
     }
 
     @Test
     public void xPremierEntreEux()
     {
+        assertEquals( "[1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]",
+                math.xPremierEntreEux(1,26).toString());
+
+        assertEquals("[7, 9]", math.xPremierEntreEux(5, 10).toString());
+
+        assertEquals("[1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]"
+                ,math.xPremierEntreEux(-29,26).toString() );
     }
+
 
     @Test
     public void alea()
@@ -97,8 +112,4 @@ public class MathUtilitairesTest
 
     }
 
-    @Test
-    public void nbrCombinaison()
-    {
-    }
 }
