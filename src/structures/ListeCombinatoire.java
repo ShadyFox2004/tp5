@@ -39,6 +39,12 @@ public class ListeCombinatoire {
     // TODO ListeCombinatoire - Compléter le code de la méthode
     public ListeCombinatoire(int pValDebut, int pValFin, int pLongCombinaison)
             throws ConstructeurException {
+        if(validerLimitesEns(pValDebut, pValFin) && validerLongCombinaison(pLongCombinaison, 0 /* je sais pas quoi mettre ici*/)) {
+            setLimitesEns(pValDebut, pValFin);
+            setLongCombinaison(pLongCombinaison);
+            setEnsembleValeurs(genererEnsembleValeurs());
+            setListeDeCombinaisons(produireListeCombinaisons(getEnsembleValeurs(), get));
+        }
     }
 
     public int getDebutEns() {
