@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e568db9-5deb-4717-97c8-22100279992d" name="Changes" comment="sa devrai marcher la">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CODEOWNERS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/structures/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utilitaires/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +36,7 @@
     <property name="jdk.selected.JAVA_MODULE" value="16" />
     <property name="jdk.selected.PLUGIN_MODULE" value="IntelliJ IDEA IU-213.7172.25" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -61,17 +52,6 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.MathUtilitairesTest.estPremier">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MathUtilitairesTest.estPremier" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tp5" />
       <extension name="coverage">
@@ -151,6 +131,7 @@
       <workItem from="1650905153941" duration="299000" />
       <workItem from="1650905952379" duration="314000" />
       <workItem from="1651160231375" duration="675000" />
+      <workItem from="1651509669448" duration="108000" />
     </task>
     <task id="LOCAL-00001" summary="gitkeep">
       <created>1650903913418</created>
@@ -203,6 +184,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gitkeep" />
