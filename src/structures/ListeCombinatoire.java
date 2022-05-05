@@ -182,6 +182,9 @@ public class ListeCombinatoire {
     // TODO toString - Compléter le code de la méthode
     @Override
     public String toString() {
-        return "";
+        return "Limite de l'ensemble : " + this.getDebutEns() + ", " + this.getFinEns() + "] \n" +
+                "Longueur combinaison : " + this.getLongCombinaison() + "\n" +
+                "Ensemble : " + this.getEnsembleValeurs().toString() + "\n" +
+                "Voici les " + this.getTailleListeDeCombinaisons() + " combinaisons : " + this.getListeDeCombinaisons().toString();
     }
 }
