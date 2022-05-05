@@ -8,7 +8,7 @@ import java.util.TreeSet;
 /**
  * Classe utilitaires pour les calculs mathématiques
  *
- * @author Vos noms
+ * @author Samuel et Henri
  */
 public class MathUtilitaires
 {
@@ -48,13 +48,12 @@ public class MathUtilitaires
      * @return la valeur du modulo.
      * @throws ArithmeticException pour la division par zéro.
      */
-    // TODO modulo - Compléter le code de la méthode
     public static int modulo(int pVal, int pMod) throws ArithmeticException
     {
         double division = pVal / pMod;
         int divisionModulo = pVal%pMod;
         int division_tronque;
-        if(divisionModulo == 0 || division > 0){
+        if(divisionModulo == 0 || division >= 0){
             division_tronque = (int) Math.floor(division);
         }
         else{
@@ -72,12 +71,11 @@ public class MathUtilitaires
      * @return un ensemble de diviseurs positifs ou null si la valeur est 0
      * (infinité de valeurs).
      */
-    // TODO diviseursDe - Compléter le code de la méthode
     public static SortedSet<Integer> diviseursDe(int pVal)
     {
         Set<Integer> diviseur = new HashSet<Integer>();
-        int end = (int) Math.sqrt(Math.abs(pVal));
-        for(int i = 1; i< end; i++)
+        int end = (int) Math.abs(pVal)/2;
+        for(int i = 1; i<= end; i++)
         {
             if( modulo(pVal,i) == 0 )
             {
@@ -99,7 +97,6 @@ public class MathUtilitaires
      * @param pVal , la valeur
      * @return vrai si la valeur reçue est un nombre premier, faux sinon
      */
-    // TODO estPremier - Compléter le code de la méthode
     public static boolean estPremier(int pVal)
     {
         return diviseursDe(pVal).size() == 2;
@@ -112,7 +109,6 @@ public class MathUtilitaires
      * @return un ensemble des X nombres premiers ou null si aucun nombre
      * premier trouvé.
      */
-    // TODO xPremier - Compléter le code de la méthode
     public static SortedSet<Integer> xPremier(int pVal)
     {
         Set<Integer> tabVals = new HashSet<Integer>();
@@ -138,10 +134,22 @@ public class MathUtilitaires
      * @param pVal2 une autre valeur
      * @return le PGCD ou 0
      */
-    // TODO PGCD - Compléter le code de la méthode
     public static int PGCD(int pVal1, int pVal2)
     {
-        return 0;
+        pVal1 = Math.abs(pVal1);
+        pVal2 = Math.abs(pVal2);
+        // si pval2 est plus petit que pVal1, le if les permute.
+        if(pVal2 < pVal1) {
+            int temp = pVal1;
+            pVal1 = pVal2;
+            pVal2 = temp;
+        }
+        if(pVal1 != 0){
+            return PGCD(pVal1, modulo(pVal2,pVal1));
+        }
+        else {
+            return pVal2;
+        }
     }
 
     /**
@@ -167,8 +175,21 @@ public class MathUtilitaires
     // TODO xPremierEntreEux - Compléter le code de la méthode
     public static SortedSet<Integer> xPremierEntreEux(int valDepart, int valRef)
     {
-        return null;
+        if(valDepart< 0){
+            valDepart = 0;
+        }
+        HashSet<Integer> tabP = new HashSet<>();
+        for(int i= valDepart; i < valRef; i++ ){
+            if(PGCD(i, valRef) == 1){
+                tabP.add(i);
+            }
+        }
+
+        return new TreeSet<>(tabP);
+
     }
+
+
 
     /**
      * Retourne aléatoirement une valeur entière entre 2 valeurs reçues. Inverse
@@ -178,7 +199,6 @@ public class MathUtilitaires
      * @param pMax une autre valeur
      * @return la valeur générée aléatoirement.
      */
-    // TODO alea - Compléter le code de la méthode
     public static int alea(int pMin, int pMax)
     {
         // si les val min/max sont incorrecte ont les permutes
@@ -191,6 +211,7 @@ public class MathUtilitaires
         }
         return (int) Math.floor(Math.random() * (pMax - pMin + 1) + pMin);
     }
+
 
     /**
      * Calcule le nombre de combinaisons différentes possibles si l'on choisit
