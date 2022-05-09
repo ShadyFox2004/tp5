@@ -39,11 +39,21 @@ public class ListeCombinatoire {
     // TODO ListeCombinatoire - Compléter le code de la méthode
     public ListeCombinatoire(int pValDebut, int pValFin, int pLongCombinaison)
             throws ConstructeurException {
-        if(validerLimitesEns(pValDebut, pValFin) && validerLongCombinaison(pLongCombinaison, 0 /* je sais pas quoi mettre ici*/)) {
+
+        List combinaisonTemp = new ArrayList();
+        int longEns = 0;
+
+        if (validerLimitesEns(pValDebut, pValFin) && validerLongCombinaison(pLongCombinaison, longEns)) {
+
             setLimitesEns(pValDebut, pValFin);
+            longEns = finEns - debutEns + 1;
+
             setLongCombinaison(pLongCombinaison);
             setEnsembleValeurs(genererEnsembleValeurs());
-            setListeDeCombinaisons(produireListeCombinaisons(getEnsembleValeurs(), get));
+
+            produireListeCombinaisons(getEnsembleValeurs(), getLongCombinaison(), combinaisonTemp);
+
+            setListeDeCombinaisons(combinaisonTemp);
         }
     }
 
@@ -53,6 +63,7 @@ public class ListeCombinatoire {
 
     public int getFinEns() {
         return finEns;
+
     }
 
     public int getLongCombinaison() {
@@ -171,8 +182,6 @@ public class ListeCombinatoire {
      * les infos d'un objet ListeCombinatoire.
      * <p>
      * Évolue selon le développement...
-     *
-     *
      * <pre>
      * Exemple de sortie voulue:
      *
