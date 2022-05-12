@@ -13,7 +13,7 @@ import exceptions.ConstructeurException;
  * Voir les combinatoires sur "Wikipédia" :
  * https://fr.wikipedia.org/wiki/Combinatoire
  *
- * @author Samuel Nguyen-Phok
+ * @author Samuel Nguyen-Phok et Antoine-Mathis Boudreau
  */
 public class ListeCombinatoire {
     public static final int VALEUR_ENS_MIN = 0;
