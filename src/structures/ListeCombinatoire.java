@@ -135,10 +135,15 @@ public class ListeCombinatoire
      *
      * @return une liste d'entiers entre les bornes début et fin
      */
-    // TODO genererEnsembleValeurs - Compléter le code de la méthode
     public List<Integer> genererEnsembleValeurs()
     {
-        return null;
+        List<Integer> ensembleValeurs = new ArrayList<Integer>();
+
+        for (int i = debutEns; i <= finEns; i++) {
+            ensembleValeurs.add(i);
+        }
+
+        return ensembleValeurs;
     }
 
     /**
