@@ -1,9 +1,9 @@
 package structures;
 
+import exceptions.ConstructeurException;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import exceptions.ConstructeurException;
 
 /**
  * Classe qui permet de produire une liste de listes de combinaison d'entiers
