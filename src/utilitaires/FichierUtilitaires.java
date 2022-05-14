@@ -1,9 +1,7 @@
 package utilitaires;
 
 import java.io.*;
-import java.util.SortedSet;
-import java.util.StringTokenizer;
-import java.util.TreeSet;
+import java.util.*;
 
 import javax.swing.JFileChooser;
 
@@ -35,7 +33,6 @@ public class FichierUtilitaires
         } catch (IOException e)
         {
             isSaved = false;
-            e.printStackTrace();
         }
         return isSaved;
     }
@@ -73,35 +70,40 @@ public class FichierUtilitaires
      * @return un SortedSet des mots du dictionnaire ou null s'il n'y a pas de mot
      * dans le fichier.
      */
-    // TODO lireDictionnaire - Compléter le code de la méthode
-    public static SortedSet<String> lireDictionnaire(File nomDic)
-    {
-        SortedSet<String> dict = new TreeSet<>();
-        StringTokenizer mot;
-
-        try
-        {
-            BufferedReader buff = new BufferedReader(new FileReader(nomDic));
-
-            while (buff.readLine() != null)
-            {
-                mot = new StringTokenizer(buff.readLine().toLowerCase().trim(), " ");
-                if (!dict.add(mot.nextToken()))
-                {
-                    dict.add(mot.nextToken());
-                }
-
+    public static SortedSet<String> lireDictionnaire(File nomDic) {
+        FileInputStream inputStream = null;
+        Scanner scan = null;
+        Set<String> set = new HashSet<>();
+        try {
+            inputStream = new FileInputStream(nomDic);
+            scan = new Scanner(inputStream, "UTF-8");
+            while (scan.hasNextLine()) {
+                set.add(scan.nextLine());
             }
 
-            buff.close();
-        } catch (FileNotFoundException e)
-        {
+            if (scan.ioException() != null) {
+                throw scan.ioException();
+            }
+
+        } catch (IOException e) {
             e.printStackTrace();
-        } catch (IOException e)
-        {
-            e.printStackTrace();
+
+        } finally {
+
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (scan != null) {
+                scan.close();
+            }
         }
-        return dict;
+
+        return new TreeSet<>(set);
     }
 
     /**
