@@ -13,10 +13,9 @@ import exceptions.ConstructeurException;
  * Voir les combinatoires sur "Wikipédia" :
  * https://fr.wikipedia.org/wiki/Combinatoire
  *
- * @author Samuel Nguyen-Phok
+ * @author Samuel Nguyen-Phok et Antoine-Mathis Boudreau
  */
-public class ListeCombinatoire
-{
+public class ListeCombinatoire {
     public static final int VALEUR_ENS_MIN = 0;
     public static final int VALEUR_ENS_MAX = 50;
     public static final int LONGUEUR_COMBINAISON_MIN = 1;
@@ -39,82 +38,84 @@ public class ListeCombinatoire
      */
     // TODO ListeCombinatoire - Compléter le code de la méthode
     public ListeCombinatoire(int pValDebut, int pValFin, int pLongCombinaison)
-            throws ConstructeurException
-    {
+            throws ConstructeurException {
+
+        List combinaisonTemp = new ArrayList();
+        int longEns = 0;
+
+        if (validerLimitesEns(pValDebut, pValFin) && validerLongCombinaison(pLongCombinaison, longEns)) {
+
+            setLimitesEns(pValDebut, pValFin);
+            longEns = finEns - debutEns + 1;
+
+            setLongCombinaison(pLongCombinaison);
+            setEnsembleValeurs(genererEnsembleValeurs());
+
+            produireListeCombinaisons(getEnsembleValeurs(), getLongCombinaison(), combinaisonTemp);
+
+            setListeDeCombinaisons(combinaisonTemp);
+        }
     }
 
-    public int getDebutEns()
-    {
+    public int getDebutEns() {
         return debutEns;
     }
 
-    public int getFinEns()
-    {
+    public int getFinEns() {
         return finEns;
+
     }
 
-    public int getLongCombinaison()
-    {
+    public int getLongCombinaison() {
         return longCombinaison;
     }
 
-    private List<Integer> getEnsembleValeurs()
-    {
+    private List<Integer> getEnsembleValeurs() {
         return ensembleValeurs;
     }
 
-    public List<Integer> getCombinaison(int index)
-    {
+    public List<Integer> getCombinaison(int index) {
         return listeDeCombinaisons.get(index);
     }
 
-    private List<List<Integer>> getListeDeCombinaisons()
-    {
+    private List<List<Integer>> getListeDeCombinaisons() {
         return listeDeCombinaisons;
     }
 
-    public int getTailleListeDeCombinaisons()
-    {
+    public int getTailleListeDeCombinaisons() {
         return listeDeCombinaisons.size();
     }
 
-    private void setLimitesEns(int pDebutEns, int pFinEns)
-    {
+    private void setLimitesEns(int pDebutEns, int pFinEns) {
         // Au besoin, inversion des valeurs pour simplement éviter les
         // erreurs...
         boolean ok = validerLimitesEns(pDebutEns = Math.min(pDebutEns, pFinEns),
                 pFinEns = Math.max(pDebutEns, pFinEns));
 
-        if (ok)
-        {
+        if (ok) {
             this.debutEns = pDebutEns;
             this.finEns = pFinEns;
         }
     }
 
-    private void setLongCombinaison(int pLongCombinaison)
-    {
+    private void setLongCombinaison(int pLongCombinaison) {
         boolean ok = validerLongCombinaison(pLongCombinaison,
                 ((getFinEns() - getDebutEns()) + 1));
 
-        if (ok)
-        {
+        if (ok) {
             this.longCombinaison = pLongCombinaison;
         }
     }
 
-    private void setEnsembleValeurs(List<Integer> pEnsemble)
-    {
+    private void setEnsembleValeurs(List<Integer> pEnsemble) {
         this.ensembleValeurs = pEnsemble;
     }
 
-    private void setListeDeCombinaisons(List<List<Integer>> listeDeCombinaisons)
-    {
+    private void setListeDeCombinaisons(List<List<Integer>> listeDeCombinaisons) {
         this.listeDeCombinaisons = listeDeCombinaisons;
     }
 
-    private boolean validerLimitesEns(int pValDebut, int pValFin)
-    {
+    private boolean validerLimitesEns(int pValDebut, int pValFin) {
         return ((pValDebut < pValFin)
                 && (pValDebut >= ListeCombinatoire.VALEUR_ENS_MIN)
                 && (pValDebut <= ListeCombinatoire.VALEUR_ENS_MAX)
@@ -123,8 +124,7 @@ public class ListeCombinatoire
     }
 
     private boolean validerLongCombinaison(int pLongCombinaison,
-                                           int pLongEnsemble)
-    {
+                                           int pLongEnsemble) {
         return ((pLongCombinaison >= ListeCombinatoire.LONGUEUR_COMBINAISON_MIN)
                 && (pLongCombinaison <= pLongEnsemble));
     }
@@ -158,23 +158,19 @@ public class ListeCombinatoire
      * intéressant : http://jm.davalan.org/mots/comb/comb/combalgo.html
      */
     private void produireListeCombinaisons(List<Integer> pEnsembleValeurs,
-                                           int pLongueurRestante, List<Integer> pCombinaisonCourante)
-    {
+                                           int pLongueurRestante, List<Integer> pCombinaisonCourante) {
         // Backup de la taille de la liste de la combinaison courante
         int longCombinaisonCourante = pCombinaisonCourante.size();
 
         for (int i = 0, longEnsembleValeurs = pEnsembleValeurs.size();
-             i < longEnsembleValeurs && pLongueurRestante <= longEnsembleValeurs - i; i++)
-        {
+             i < longEnsembleValeurs && pLongueurRestante <= longEnsembleValeurs - i; i++) {
             // Ajoute l'élément i à la combinaison courante
             pCombinaisonCourante.add(pEnsembleValeurs.get(i));
 
             // La combinaison courante est-elle complète
-            if (pLongueurRestante == 1)
-            {
+            if (pLongueurRestante == 1) {
                 listeDeCombinaisons.add(new ArrayList<Integer>(pCombinaisonCourante));
-            } else
-            {
+            } else {
                 // Demander une nouvelle combinaison avec le reste des valeurs
                 // de l'ensemble
                 produireListeCombinaisons(pEnsembleValeurs.subList(i + 1, longEnsembleValeurs),
@@ -192,8 +188,6 @@ public class ListeCombinatoire
      * les infos d'un objet ListeCombinatoire.
      * <p>
      * Évolue selon le développement...
-     *
-     *
      * <pre>
      * Exemple de sortie voulue:
      *
@@ -206,8 +200,10 @@ public class ListeCombinatoire
      */
     // TODO toString - Compléter le code de la méthode
     @Override
-    public String toString()
-    {
-        return "";
+    public String toString() {
+        return "Limite de l'ensemble : " + this.getDebutEns() + ", " + this.getFinEns() + "] \n" +
+                "Longueur combinaison : " + this.getLongCombinaison() + "\n" +
+                "Ensemble : " + this.getEnsembleValeurs().toString() + "\n" +
+                "Voici les " + this.getTailleListeDeCombinaisons() + " combinaisons : " + this.getListeDeCombinaisons().toString();
     }
 }
