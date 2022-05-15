@@ -69,8 +69,8 @@ public class FichierUtilitaires
      * @param nomDic le nom du fichier dictionnaire
      * @return un SortedSet des mots du dictionnaire ou null s'il n'y a pas de mot
      * dans le fichier.
-     */
-    public static SortedSet<String> lireDictionnaire(File nomDic) {
+     */ 
+     public static SortedSet<String> lireDictionnaire(File nomDic) {
         FileInputStream inputStream = null;
         Scanner scan = null;
         Set<String> set = new HashSet<>();

@@ -1,9 +1,9 @@
 package structures;
 
+import exceptions.ConstructeurException;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import exceptions.ConstructeurException;
 
 /**
  * Classe qui permet de produire une liste de listes de combinaison d'entiers
@@ -39,7 +39,6 @@ public class ListeCombinatoire {
     // TODO ListeCombinatoire - Compléter le code de la méthode
     public ListeCombinatoire(int pValDebut, int pValFin, int pLongCombinaison)
             throws ConstructeurException {
-
         List combinaisonTemp = new ArrayList();
         int longEns = 0;
 

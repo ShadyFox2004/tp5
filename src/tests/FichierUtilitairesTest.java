@@ -5,6 +5,7 @@ import org.junit.Test;
 import utilitaires.FichierUtilitaires;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.SortedSet;
 
 import static org.junit.Assert.assertEquals;
@@ -41,10 +42,10 @@ public class FichierUtilitairesTest
     }
 
     @Test
-    public void lireDictionnaire()
+    public void lireDictionnaire() throws FileNotFoundException
     {
         // filepath specific a l,ordi de l'école
-        SortedSet<String> dict = file.lireDictionnaire(new File("/C:/Users/2034123/Desktop/TP5/dictionnaire.txt"));
+        SortedSet<String> dict = file.lireDictionnaire(new File("/home/wildsource/IdeaProjects/tp5/dictionnaire.txt"));
         System.out.println(dict.toString());
     }
 
@@ -52,7 +53,7 @@ public class FichierUtilitairesTest
     public void obtenirNomFichier()
     {
         // filepath specific a mon ordi
-        File compare = new File("/home/wildsource/IdeaProjects/TP5/dictionnaire.txt");
+        File compare = new File("/home/wildsource/IdeaProjects/tp5/dictionnaire.txt");
         assertEquals(compare, file.obtenirNomFichier("click dictionaire"));
         assertEquals(null, file.obtenirNomFichier("return null test click cancel"));
     }
