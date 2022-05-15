@@ -6,7 +6,7 @@ public interface iMatrice
 	/**
 	 * Permet de choisir une matrice au hasard parmi les matrices disponibles
 	 * dans une liste de matrices candidates, comme matrice courante ou null si
-	 * la liste est vide.
+	 * la liste est vide. d
 	 */
 	public void choisirMatriceCourante();
 
