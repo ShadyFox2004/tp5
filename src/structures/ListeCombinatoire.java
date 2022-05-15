@@ -13,7 +13,7 @@ import java.util.List;
  * Voir les combinatoires sur "Wikipédia" :
  * https://fr.wikipedia.org/wiki/Combinatoire
  *
- * @author Samuel Nguyen-Phok
+ * @author Samuel Nguyen-Phok et Antoine-Mathis Boudreau
  */
 public class ListeCombinatoire {
     public static final int VALEUR_ENS_MIN = 0;
@@ -39,6 +39,21 @@ public class ListeCombinatoire {
     // TODO ListeCombinatoire - Compléter le code de la méthode
     public ListeCombinatoire(int pValDebut, int pValFin, int pLongCombinaison)
             throws ConstructeurException {
+        List combinaisonTemp = new ArrayList();
+        int longEns = 0;
+
+        if (validerLimitesEns(pValDebut, pValFin) && validerLongCombinaison(pLongCombinaison, longEns)) {
+
+            setLimitesEns(pValDebut, pValFin);
+            longEns = finEns - debutEns + 1;
+
+            setLongCombinaison(pLongCombinaison);
+            setEnsembleValeurs(genererEnsembleValeurs());
+
+            produireListeCombinaisons(getEnsembleValeurs(), getLongCombinaison(), combinaisonTemp);
+
+            setListeDeCombinaisons(combinaisonTemp);
+        }
     }
 
     public int getDebutEns() {
@@ -47,6 +62,7 @@ public class ListeCombinatoire {
 
     public int getFinEns() {
         return finEns;
+
     }
 
     public int getLongCombinaison() {
@@ -118,9 +134,15 @@ public class ListeCombinatoire {
      *
      * @return une liste d'entiers entre les bornes début et fin
      */
-    // TODO genererEnsembleValeurs - Compléter le code de la méthode
-    public List<Integer> genererEnsembleValeurs() {
-        return null;
+    public List<Integer> genererEnsembleValeurs()
+    {
+        List<Integer> ensembleValeurs = new ArrayList<Integer>();
+
+        for (int i = debutEns; i <= finEns; i++) {
+            ensembleValeurs.add(i);
+        }
+
+        return ensembleValeurs;
     }
 
     /**
@@ -165,8 +187,6 @@ public class ListeCombinatoire {
      * les infos d'un objet ListeCombinatoire.
      * <p>
      * Évolue selon le développement...
-     *
-     *
      * <pre>
      * Exemple de sortie voulue:
      *
