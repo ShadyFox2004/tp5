@@ -1,5 +1,6 @@
 package tests;
 
+import exceptions.ConstructeurException;
 import org.junit.Before;
 import org.junit.Test;
 import structures.ListeCombinatoire;
@@ -21,7 +22,21 @@ public class ListeCombinatoireTest {
 
     @Test
     public void testInvalide() {
-
+        try {
+            ListeCombinatoire test = new ListeCombinatoire(-5, 5, 3);
+        }
+        catch(ConstructeurException e) {
+        }
+        try {
+            ListeCombinatoire test = new ListeCombinatoire(4, 51, 3);
+        }
+        catch(ConstructeurException e) {
+        }
+        try {
+            ListeCombinatoire test = new ListeCombinatoire(5, 30, -1);
+        }
+        catch(ConstructeurException e) {
+        }
     }
 
     @Test
