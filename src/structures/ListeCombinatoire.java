@@ -41,11 +41,11 @@ public class ListeCombinatoire {
             throws ConstructeurException {
         List combinaisonTemp = new ArrayList();
         int longEns = 0;
-
+        longEns = finEns - debutEns + 1;
         if (validerLimitesEns(pValDebut, pValFin) && validerLongCombinaison(pLongCombinaison, longEns)) {
 
             setLimitesEns(pValDebut, pValFin);
-            longEns = finEns - debutEns + 1;
+
 
             setLongCombinaison(pLongCombinaison);
             setEnsembleValeurs(genererEnsembleValeurs());
