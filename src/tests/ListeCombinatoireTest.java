@@ -5,6 +5,9 @@ import org.junit.Before;
 import org.junit.Test;
 import structures.ListeCombinatoire;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -41,6 +44,15 @@ public class ListeCombinatoireTest {
 
     @Test
     public void genererEnsembleValeurs() {
+         smallList.genererEnsembleValeurs();
+
+        List<Integer> resultExpected = new ArrayList<>();
+        // genereEnsembleValeurs doit genere un ensemble de valeur entre les deux borne predefinies incluse
+
+         for (int i = smallList.getDebutEns(); i <= smallList.getFinEns(); i++)
+             resultExpected.add(i);
+
+         assertEquals(resultExpected ,smallList.genererEnsembleValeurs());
     }
 
     @Test
