@@ -107,8 +107,7 @@ public class MessageChiffrerDechiffrer implements iCrypto
     {
         String reponse = message;
 
-        while(message.length() <= longVoulue)
-            message += " ";
+        while(reponse.length() < longVoulue) reponse += " ";
 
         return reponse;
     }
