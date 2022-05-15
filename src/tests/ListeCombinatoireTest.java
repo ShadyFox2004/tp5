@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Cette classe test les methodes de la classe ListeCombinatoire
  *
- * @author Samuel Nguyen-Phok
+ * @author Samuel Nguyen-Phok et Antoine-Mathis Boudreau
  */
 public class ListeCombinatoireTest {
     private ListeCombinatoire smallList;
