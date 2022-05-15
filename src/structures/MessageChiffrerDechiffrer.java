@@ -103,14 +103,13 @@ public class MessageChiffrerDechiffrer implements iCrypto
     }
 
     @Override
-    // TODO ajusterMessageBrute - Compléter le code de la méthode
     public String ajusterMessageBrute(String message, int longVoulue)
     {
         String reponse = message;
 
         while(message.length() <= longVoulue)
             message += " ";
-            
+
         return reponse;
     }
 
