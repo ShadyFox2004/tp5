@@ -1,7 +1,12 @@
 package structures;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.SortedSet;
 import java.util.StringTokenizer;
+
+import javax.print.attribute.HashAttributeSet;
 
 import exceptions.ConstructeurException;
 import utilitaires.MathUtilitaires;
@@ -95,11 +100,25 @@ public class MessageChiffrerDechiffrer implements iCrypto
     }
 
     @Override
-    // TODO validerMessageSelonDico - Compléter le code de la méthode
+    // TODO faire les tests avec un dico
     public boolean validerMessageSelonDico(String message,
                                            float pourcentageDeReussite)
     {
-        return true;
+        boolean passe;
+
+        StringTokenizer messageTokenizer; // Will serve to iterate through the message; 
+        int nbOfTokenMatching = 0;
+
+        messageTokenizer = new StringTokenizer(message.toLowerCase(), " "); // Splits the String into tokens
+        int tokenNb = messageTokenizer.countTokens(); // Creates a token count so it can create a percentage.
+
+        while(messageTokenizer.hasMoreTokens())
+            if(dico.contains(messageTokenizer.nextToken()))
+                nbOfTokenMatching++;
+
+        passe = (float)nbOfTokenMatching/(float)tokenNb >= pourcentageDeReussite;
+    
+        return passe;
     }
 
     @Override

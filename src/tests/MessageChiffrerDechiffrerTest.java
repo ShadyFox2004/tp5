@@ -1,6 +1,8 @@
 package tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +18,16 @@ public class MessageChiffrerDechiffrerTest {
     }
 
     @Test
+    public void validerMessageSelonDico() {
+        //Lower case
+        assertTrue(messageChiffrerDechiffrer.validerMessageSelonDico("bonjour le monde", 100));
+        
+        //Upper case
+        assertTrue(messageChiffrerDechiffrer.validerMessageSelonDico("BONJOUR LE MONDE", 100));
+        assertFalse(messageChiffrerDechiffrer.validerMessageSelonDico("NULL", 40));
+    }
+    
+    @Test
     public void ajusterMessageBrute() {
         String message = "My message";
 
@@ -23,4 +35,6 @@ public class MessageChiffrerDechiffrerTest {
 
         assertEquals(expected.toString(), messageChiffrerDechiffrer.ajusterMessageBrute(message, expected.length()));
     }
+
+    
 }
