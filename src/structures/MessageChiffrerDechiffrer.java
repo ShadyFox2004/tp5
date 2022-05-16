@@ -1,10 +1,6 @@
 package structures;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.SortedSet;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import javax.print.attribute.HashAttributeSet;
 
@@ -15,7 +11,7 @@ import utilitaires.MatriceUtilitaires;
 /**
  * Cette classe sert a chiffrer et dechiffrer les strings reçuent
  *
- * @author Henry Baillargeon
+ * @author Henri Baillargeon et Antoine-Mathis Goudreau
  */
 public class MessageChiffrerDechiffrer implements iCrypto
 {
@@ -138,10 +134,74 @@ public class MessageChiffrerDechiffrer implements iCrypto
         return "";
     }
 
+
+    /**
+     * Permet de déchiffrer le message reçu en entrée. Cette méthode essaie de
+     * trouver la matrice de chiffrement qui a servi à chiffrer le message reçu
+     * parmi toutes les matrices candidates disponibles. Elle itère en prenant
+     * l'inverse de Hill de chacune des matrices candidates et déchiffre le
+     * message. Une fois déchiffré elle valide les mots du message avec les mots
+     * du dictionnaire. Si la concordance des mots est bonne, la méthode conclut
+     * que le message est déchiffré et retourne ce dernier. Sinon elle passe à
+     * la prochaine matrice candidate. Si aucune matrice n'est trouvée la
+     * méthode retourne null.
+     *
+     * @param message le message à déchiffrer.
+     *
+     * @return le message déchiffré ou null.
+     */
     @Override
     // TODO decoder - Compléter le code de la méthode
-    public String decoder(String message)
-    {
-        return "";
+    public String decoder(String message) {
+
+        //nombre de matrice possible
+        int nbrMatC = listeMatricesCandidates.getNombreMatricesCandidates();
+
+        //changer le message en valeur indicielle du vecteur de caractere contenue dans un tableaus
+        int[] strTabval = new int[message.length()];
+        for (int cptString = 0; cptString < message.length(); cptString++) {
+            strTabval[cptString] = vecCaracteres.getIndice(message.charAt(cptString));
+        }
+
+        //initialisation de la string de retoure
+        String str = null;
+
+
+        for (int cptMat = 0; cptMat < nbrMatC; cptMat++) {
+
+            //choisie la matrice qui sera tester
+            listeMatricesCandidates.choisirMatriceCourante(cptMat);
+            int[][] matHl = listeMatricesCandidates.getMatriceCouranteInverseHill();
+
+            //initialisation du compteur des indice de la string.
+            for (int cptString = 0; cptString < message.length(); cptString++) {
+
+                // double boucle for pour naviguer dans le tableau
+                for (int cptRang = 0; cptRang < 3; cptRang++) {
+
+                    //total du calcule
+                    int totale = 0;
+                    for (int cptCol = 0; cptCol < 3; cptCol++) {
+                        //partie du calcule du charactere mystere
+                        totale += matHl[cptRang][cptCol] * strTabval[cptCol];
+                    }
+
+                    //addition du caractere mystere a la string.
+                    str += MathUtilitaires.modulo(vecCaracteres.getCaractere(totale),
+                            listeMatricesCandidates.getCoefDansZ());
+
+                }
+            }
+
+            //je ne voyait plus le bout du tunnel donc j'ai mis un break
+            if (str != null && validerMessageSelonDico(str, 0.8f)) {
+                break;
+            }else{
+                str = null;
+            }
+        }
+
+        //retourne la string decripter ou null.
+        return str;
     }
 }
