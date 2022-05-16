@@ -26,6 +26,7 @@ public class ListeCombinatoire {
     private List<List<Integer>> listeDeCombinaisons = null;
     private List<Integer> ensembleValeurs = null;
 
+
     /**
      * Valide et initialise les attributs de la classe. Il génère le vecteur de
      * valeurs selon les bornes reçues. Il génère les listes combinatoires en
@@ -34,21 +35,20 @@ public class ListeCombinatoire {
      * @param pValDebut        la borne min pour l'ensemble des valeurs
      * @param pValFin          la borne max pour l'ensemble des valeurs
      * @param pLongCombinaison la longueur des combinaisons
-     * @throws ConstructeurException
+     * @throws ConstructeurException execption de constructeur
      */
     // TODO ListeCombinatoire - Compléter le code de la méthode
     public ListeCombinatoire(int pValDebut, int pValFin, int pLongCombinaison)
             throws ConstructeurException {
-        List combinaisonTemp = new ArrayList();
+       List<Integer> combinaisonTemp = new ArrayList<Integer>();
+       listeDeCombinaisons = new ArrayList<>();
 
         if (validerLimitesEns(pValDebut, pValFin) && validerLongCombinaison(pLongCombinaison, pValFin -pValDebut + 1)) {
             setLimitesEns(pValDebut, pValFin);
             setLongCombinaison(pLongCombinaison);
             setEnsembleValeurs(genererEnsembleValeurs());
 
-            produireListeCombinaisons(getEnsembleValeurs(), getLongCombinaison(), combinaisonTemp);
-
-            setListeDeCombinaisons(combinaisonTemp);
+            produireListeCombinaisons(ensembleValeurs, pLongCombinaison, combinaisonTemp);
         }
     }
 
@@ -196,7 +196,7 @@ public class ListeCombinatoire {
     // TODO toString - Compléter le code de la méthode
     @Override
     public String toString() {
-        return "Limite de l'ensemble : " + this.getDebutEns() + ", " + this.getFinEns() + "] \n" +
+        return "Limite de l'ensemble : [" + this.getDebutEns() + ", " + this.getFinEns() + "] \n" +
                 "Longueur combinaison : " + this.getLongCombinaison() + "\n" +
                 "Ensemble : " + this.getEnsembleValeurs().toString() + "\n" +
                 "Voici les " + this.getTailleListeDeCombinaisons() + " combinaisons : " + this.getListeDeCombinaisons().toString();

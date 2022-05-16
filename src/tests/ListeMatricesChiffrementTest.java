@@ -3,7 +3,7 @@ package tests;
 import org.junit.Before;
 import org.junit.Test;
 import structures.ListeMatricesChiffrement;
-
+import utilitaires.*;
 import static org.junit.Assert.*;
 
 /**
@@ -19,24 +19,28 @@ public class ListeMatricesChiffrementTest {
 
     @Test
     public void getNombreMatricesCandidates() {
-        System.out.println(listMat1.getNombreMatricesCandidates());
+
     }
 
     @Test
     public void choisirMatriceCourante() {
-    }
-
-    @Test
-    public void testChoisirMatriceCourante() {
+        listMat1.choisirMatriceCourante(0);
+        System.out.println(MatriceUtilitaires.toStringMat(listMat1.getCopieMatriceCourante()));
+        listMat1.choisirMatriceCourante(1);
+        System.out.println(MatriceUtilitaires.toStringMat(listMat1.getCopieMatriceCourante()));
+        listMat1.choisirMatriceCourante(2);
+        System.out.println(MatriceUtilitaires.toStringMat(listMat1.getCopieMatriceCourante()));
+        System.out.print(listMat1.getNombreMatricesCandidates());
     }
 
     @Test
     public void getCopieMatriceCourante() {
+        System.out.println(MatriceUtilitaires.toStringMat(listMat1.getCopieMatriceCourante()));
 
     }
 
     @Test
     public void getMatriceCouranteInverseHill() {
-
+        assertEquals(listMat1.getMatriceCouranteInverseHill(), new int[][]{{27, 2, 27}, {2, 2, 23}, {27, 5, 25}});
     }
 }
