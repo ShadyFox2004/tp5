@@ -79,11 +79,9 @@ public class ListeMatricesChiffrement implements iMatrice
 		if(setCoefDansZ(pCoefDansZ)){
 			throw new ConstructeurException("le coefficient est invalide");
 		}
-		ListeCombinatoire listeCombinatoire = new ListeCombinatoire
-		(pBorneInf, pBorneSup, (int) Math.pow(pDimension, 2));
-		genererListeMatrices(listeCombinatoire);
-
-
+		genererListeMatrices(new ListeCombinatoire
+				(pBorneInf, pBorneSup, (int) Math.pow(pDimension, 2)));
+		choisirMatriceCourante();
 
 	}
 
