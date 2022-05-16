@@ -58,7 +58,7 @@ public class ListeCombinatoireTest {
     @Test
     public void testToString() {
         System.out.println(smallList.toString());
-        assertEquals("Limite de l'ensemble : [0, 2]\n" +
+        assertEquals("Limite de l'ensemble : [0, 2] \n" +
                 "Longueur combinaison : 3\n" +
                 "Ensemble : [0, 1, 2]\n" +
                 "Voici les 1 combinaisons : [[0, 1, 2]]", smallList.toString());
