@@ -2,11 +2,8 @@ package structures;
 
 import java.util.*;
 
-import javax.print.attribute.HashAttributeSet;
-
 import exceptions.ConstructeurException;
 import utilitaires.MathUtilitaires;
-import utilitaires.MatriceUtilitaires;
 
 /**
  * Cette classe sert a chiffrer et dechiffrer les strings reçuent
@@ -127,11 +124,62 @@ public class MessageChiffrerDechiffrer implements iCrypto
         return reponse;
     }
 
+    /**
+     * Permet de chiffrer le message reçu en entrée. Cette méthode choisit une
+     * matrice au hasard dans l'ensemble des matrices candidates. Elle ajuste la
+     * longueur du message selon la dimension de la matrice choisie. Pour
+     * terminer elle encode le message selon le chiffrement de Hill à l'aide de
+     * la copie de la matrice choisie.
+     *
+     * @param message le message à chiffrer.
+     *
+     * @return le message chiffré.
+     */
     @Override
     // TODO encoder - Compléter le code de la méthode
     public String encoder(String message)
     {
-        return "";
+        if(MathUtilitaires.PGCD(3,message.length()) != 1) {
+           int modulo = MathUtilitaires.modulo(message.length(), 3);
+           for (int i = 0; i < modulo; i++){
+               message += " ";
+           }
+        }
+
+        int[] strTabval = new int[message.length()];
+        for (int cptString = 0; cptString < message.length(); cptString++) {
+            strTabval[cptString] = vecCaracteres.getIndice(message.charAt(cptString));
+        }
+
+        listeMatricesCandidates.choisirMatriceCourante();
+        int[][] mat = listeMatricesCandidates.getCopieMatriceCourante();
+
+        return chiffrementDeHill(mat, strTabval);
+
+    }
+
+    private String chiffrementDeHill(int[][] mat, int[] msgEnVal){
+        String str = "";
+        //initialisation du compteur des indice de la string.
+        for (int cptString = 0; cptString < msgEnVal.length; cptString++) {
+
+            // double boucle for pour naviguer dans le tableau
+            for (int cptRang = 0; cptRang < 3; cptRang++) {
+
+                //total du calcule
+                int totale = 0;
+                for (int cptCol = 0; cptCol < 3; cptCol++) {
+                    //partie du calcule du charactere mystere
+                    totale += mat[cptRang][cptCol] * msgEnVal[cptCol];
+                }
+
+                //addition du caractere mystere a la string.
+                str += MathUtilitaires.modulo(vecCaracteres.getCaractere(totale),
+                        listeMatricesCandidates.getCoefDansZ());
+
+            }
+        }
+        return str;
     }
 
 
@@ -166,33 +214,13 @@ public class MessageChiffrerDechiffrer implements iCrypto
         //initialisation de la string de retoure
         String str = null;
 
-
         for (int cptMat = 0; cptMat < nbrMatC; cptMat++) {
 
             //choisie la matrice qui sera tester
             listeMatricesCandidates.choisirMatriceCourante(cptMat);
             int[][] matHl = listeMatricesCandidates.getMatriceCouranteInverseHill();
 
-            //initialisation du compteur des indice de la string.
-            for (int cptString = 0; cptString < message.length(); cptString++) {
-
-                // double boucle for pour naviguer dans le tableau
-                for (int cptRang = 0; cptRang < 3; cptRang++) {
-
-                    //total du calcule
-                    int totale = 0;
-                    for (int cptCol = 0; cptCol < 3; cptCol++) {
-                        //partie du calcule du charactere mystere
-                        totale += matHl[cptRang][cptCol] * strTabval[cptCol];
-                    }
-
-                    //addition du caractere mystere a la string.
-                    str += MathUtilitaires.modulo(vecCaracteres.getCaractere(totale),
-                            listeMatricesCandidates.getCoefDansZ());
-
-                }
-            }
-
+            str = chiffrementDeHill(matHl, strTabval);
             //je ne voyait plus le bout du tunnel donc j'ai mis un break
             if (str != null && validerMessageSelonDico(str, 0.8f)) {
                 break;
