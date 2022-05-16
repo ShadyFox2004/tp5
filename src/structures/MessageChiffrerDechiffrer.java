@@ -139,6 +139,7 @@ public class MessageChiffrerDechiffrer implements iCrypto
     // TODO encoder - Compléter le code de la méthode
     public String encoder(String message)
     {
+        //si le message nest pas divisible en section de trois, ajoute des espace a la fin
         if(MathUtilitaires.PGCD(3,message.length()) != 1) {
            int modulo = MathUtilitaires.modulo(message.length(), 3);
            for (int i = 0; i < modulo; i++){
@@ -146,14 +147,17 @@ public class MessageChiffrerDechiffrer implements iCrypto
            }
         }
 
+        //remplace les caractaire du message par leur valeur dans vecCaratere
         int[] strTabval = new int[message.length()];
         for (int cptString = 0; cptString < message.length(); cptString++) {
             strTabval[cptString] = vecCaracteres.getIndice(message.charAt(cptString));
         }
 
+        //choisi une matrice au hasard.
         listeMatricesCandidates.choisirMatriceCourante();
         int[][] mat = listeMatricesCandidates.getCopieMatriceCourante();
 
+        //encrypte le message.
         return chiffrementDeHill(mat, strTabval);
 
     }
