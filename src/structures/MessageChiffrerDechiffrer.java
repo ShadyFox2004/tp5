@@ -37,6 +37,14 @@ public class MessageChiffrerDechiffrer implements iCrypto
                                      ListeMatricesChiffrement listeMats, SortedSet<String> dico)
             throws ConstructeurException
     {
+        if(validerVecCaracteres(vecCars) && validerMatsEncodage(listeMats) && validerDico(dico)){
+            setDico(dico);
+            setMatsEncodage(listeMats);
+            setVecCaracteres(vecCars);
+        }
+        else{
+            throw new ConstructeurException();
+        }
     }
 
     private void setVecCaracteres(VecteurDeCaracteres pVec)
@@ -143,7 +151,7 @@ public class MessageChiffrerDechiffrer implements iCrypto
         if(MathUtilitaires.PGCD(3,message.length()) != 1) {
            int modulo = MathUtilitaires.modulo(message.length(), 3);
            for (int i = 0; i < modulo; i++){
-               message += " ";
+               message += CAR_DE_COMPLEMENT;
            }
         }
 
