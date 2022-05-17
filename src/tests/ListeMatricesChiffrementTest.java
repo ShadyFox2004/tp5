@@ -4,17 +4,18 @@ import org.junit.Before;
 import org.junit.Test;
 import structures.ListeMatricesChiffrement;
 import utilitaires.*;
-import static org.junit.Assert.*;
 
 /**
  * @author Henri
  */
 
 public class ListeMatricesChiffrementTest {
-    ListeMatricesChiffrement listMat1, listmat2, listMat3;
+    ListeMatricesChiffrement listMat1;
+    int[][] listmat2;
+    ListeMatricesChiffrement listMat3;
     @Before
     public void setUp() throws Exception {
-        listMat1 = new ListeMatricesChiffrement(1, 10, 3, 28);
+        listMat1 = new ListeMatricesChiffrement(0, 9, 3, 28);
     }
 
     @Test
@@ -41,6 +42,21 @@ public class ListeMatricesChiffrementTest {
 
     @Test
     public void getMatriceCouranteInverseHill() {
-        assertEquals(listMat1.getMatriceCouranteInverseHill(), new int[][]{{27, 2, 27}, {2, 2, 23}, {27, 5, 25}});
+        listMat1.choisirMatriceCourante();
+        listmat2 = listMat1.getMatriceCouranteInverseHill();
+        System.out.println(MatriceUtilitaires.toStringMat(listmat2));
+
+    }
+
+    @Test
+    public void getMatriceCouranteInverseHillCopie()
+    {
+        int[][] matriceCourante = new int[][] {{1, 3, 4}, {5, 6, 7}, {8, 9, 10}};
+
+        System.out.println(MatriceUtilitaires.toStringMat(MatriceUtilitaires.getMatModuloX(
+                MatriceUtilitaires.getMatMultScalaire(
+                        MatriceUtilitaires.getMatAdjointe(new int[][] {{1, 3, 4}, {5, 6, 7}, {8, 9, 10}}),
+                        MatriceUtilitaires.getDeterminantInverseHill(
+                                MatriceUtilitaires.getDeterminant(matriceCourante), 28)), 28)));
     }
 }

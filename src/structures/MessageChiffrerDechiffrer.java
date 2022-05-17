@@ -8,7 +8,7 @@ import utilitaires.MathUtilitaires;
 /**
  * Cette classe sert a chiffrer et dechiffrer les strings reçuent
  *
- * @author Henri Baillargeon et Antoine-Mathis Goudreau
+ * @author Henri Baillargeon et Antoine-Mathis Boudreau
  */
 public class MessageChiffrerDechiffrer implements iCrypto
 {
@@ -37,13 +37,23 @@ public class MessageChiffrerDechiffrer implements iCrypto
                                      ListeMatricesChiffrement listeMats, SortedSet<String> dico)
             throws ConstructeurException
     {
-        if(validerVecCaracteres(vecCars) && validerMatsEncodage(listeMats) && validerDico(dico)){
-            setDico(dico);
-            setMatsEncodage(listeMats);
+        if(validerVecCaracteres(vecCars)){
             setVecCaracteres(vecCars);
         }
         else{
-            throw new ConstructeurException();
+            throw new ConstructeurException("vecteur de caractere invalide");
+        }
+        if (validerDico(dico)){
+            setDico(dico);
+        }
+        else {
+            throw new ConstructeurException("dictionnaire invalide");
+        }
+        if(validerMatsEncodage(listeMats)){
+            setMatsEncodage(listeMats);
+        }
+        else {
+            throw new ConstructeurException("listeMatrice invalide");
         }
     }
 
@@ -147,12 +157,10 @@ public class MessageChiffrerDechiffrer implements iCrypto
     // TODO encoder - Compléter le code de la méthode
     public String encoder(String message)
     {
+        message = message.toUpperCase(Locale.ROOT);
         //si le message nest pas divisible en section de trois, ajoute des espace a la fin
-        if(MathUtilitaires.PGCD(3,message.length()) != 1) {
-           int modulo = MathUtilitaires.modulo(message.length(), 3);
-           for (int i = 0; i < modulo; i++){
-               message += CAR_DE_COMPLEMENT;
-           }
+        while(MathUtilitaires.modulo(message.length(),getMatriceCourante().length) != 0) {
+            message = ajusterMessageBrute(message, message.length() + 1);
         }
 
         //remplace les caractaire du message par leur valeur dans vecCaratere
@@ -173,23 +181,25 @@ public class MessageChiffrerDechiffrer implements iCrypto
     private String chiffrementDeHill(int[][] mat, int[] msgEnVal){
         String str = "";
         //initialisation du compteur des indice de la string.
-        for (int cptString = 0; cptString < msgEnVal.length; cptString++) {
+        int cptString = 0;
+        while (cptString < msgEnVal.length) {
 
             // double boucle for pour naviguer dans le tableau
-            for (int cptRang = 0; cptRang < 3; cptRang++) {
+            for (int cptRang = 0; cptRang < mat.length; cptRang++) {
 
                 //total du calcule
                 int totale = 0;
-                for (int cptCol = 0; cptCol < 3; cptCol++) {
+                for (int cptCol = 0; cptCol < mat.length; cptCol++) {
                     //partie du calcule du charactere mystere
-                    totale += mat[cptRang][cptCol] * msgEnVal[cptCol];
+                    totale += mat[cptRang][cptCol] * msgEnVal[cptCol + cptString];
                 }
-
                 //addition du caractere mystere a la string.
-                str += MathUtilitaires.modulo(vecCaracteres.getCaractere(totale),
-                        listeMatricesCandidates.getCoefDansZ());
+                str += vecCaracteres.getCaractere(
+                        MathUtilitaires.modulo(Math.abs(totale), listeMatricesCandidates.getCoefDansZ()));
 
             }
+
+            cptString+= mat.length;
         }
         return str;
     }

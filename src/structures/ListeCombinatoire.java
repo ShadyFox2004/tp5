@@ -13,7 +13,8 @@ import java.util.List;
  * Voir les combinatoires sur "Wikipédia" :
  * https://fr.wikipedia.org/wiki/Combinatoire
  *
- * @author Samuel Nguyen-Phok et Antoine-Mathis Boudreau
+ * @author Samuel Nguyen-Phok et Antoine-Mathis Boudreau Debugg: Henri
+ *
  */
 public class ListeCombinatoire {
     public static final int VALEUR_ENS_MIN = 0;
