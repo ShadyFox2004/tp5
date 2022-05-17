@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import structures.ListeMatricesChiffrement;
 import utilitaires.*;
+import static org.junit.Assert.*;
 
 /**
  * @author Henri
@@ -58,5 +59,6 @@ public class ListeMatricesChiffrementTest {
                         MatriceUtilitaires.getMatAdjointe(new int[][] {{1, 3, 4}, {5, 6, 7}, {8, 9, 10}}),
                         MatriceUtilitaires.getDeterminantInverseHill(
                                 MatriceUtilitaires.getDeterminant(matriceCourante), 28)), 28)));
+        assertEquals(listMat1.getMatriceCouranteInverseHill(), new int[][]{{27, 2, 27}, {2, 2, 23}, {27, 5, 25}});s
     }
 }
