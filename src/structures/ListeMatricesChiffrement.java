@@ -4,6 +4,7 @@ import exceptions.ConstructeurException;
 import utilitaires.MathUtilitaires;
 import utilitaires.MatriceUtilitaires;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -67,12 +68,13 @@ public class ListeMatricesChiffrement implements iMatrice
 	public ListeMatricesChiffrement(int pBorneInf, int pBorneSup,
 			int pDimension, int pCoefDansZ) throws ConstructeurException
 	{
-		//j'ai modifier les set pour qu'il retourne un boolean pour rendre la verification plus rapide.
+
+
 		if(setDimension(pDimension)){
 			throw new ConstructeurException("dimension invalide");
 		}
 
-		if (setBornes(pBorneInf, pBorneSup)) {
+		if (setBornes(pBorneInf, pBorneSup) && pDimension <= pBorneSup - pBorneInf) {
 			throw new ConstructeurException("les bornes son invalide");
 		}
 
@@ -82,7 +84,6 @@ public class ListeMatricesChiffrement implements iMatrice
 		genererListeMatrices(new ListeCombinatoire
 				(pBorneInf, pBorneSup, (int) Math.pow(pDimension, 2)));
 		choisirMatriceCourante();
-
 	}
 
 	public int getBorneInf()
@@ -243,9 +244,6 @@ public class ListeMatricesChiffrement implements iMatrice
 	@Override
 	public int[][] getMatriceCouranteInverseHill()
 	{
-//		int[][] inverse = MatriceUtilitaires.getMatAdjointe(getCopieMatriceCourante());
-//		int detHill = MatriceUtilitaires.getDeterminantInverseHill
-//				(MatriceUtilitaires.getDeterminant(matriceCourante), getCoefDansZ());
 
 		return MatriceUtilitaires.getMatModuloX(MatriceUtilitaires.getMatMultScalaire
 				(MatriceUtilitaires.getMatAdjointe
@@ -270,7 +268,7 @@ public class ListeMatricesChiffrement implements iMatrice
 	private void genererListeMatrices(ListeCombinatoire pListe)
 	{
 		List<int[][]> listeMatrices = new ArrayList<>();
-		for(int i = 0; i < pListe.getLongCombinaison(); i ++ ){
+		for(int i = 0; i < pListe.getTailleListeDeCombinaisons(); i ++ ){
 			int[][] matTemp = listeAMatriceNxN(pListe.getCombinaison(i));
 			if(estCanditate(matTemp)){
 				listeMatrices.add(matTemp);
@@ -282,9 +280,10 @@ public class ListeMatricesChiffrement implements iMatrice
 	private int[][] listeAMatriceNxN(List<Integer> liste){
 		int n = (int) Math.sqrt(liste.size());
 		int[][] mat = new int[n][n];
+		int cptInt = 0;
 		for (int i = 0; i< n; i++){
 			for (int j=0; j< n; j++){
-				mat[i][j] = liste.get(i+j);
+				mat[i][j] = liste.get(cptInt++);
 			}
 		}
 		return mat;

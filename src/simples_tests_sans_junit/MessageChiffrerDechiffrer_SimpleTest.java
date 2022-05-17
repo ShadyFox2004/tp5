@@ -14,8 +14,8 @@ import structures.MessageChiffrerDechiffrer;
 public class MessageChiffrerDechiffrer_SimpleTest 
 {
 	private static final int MIN = 1;
-	private static final int MAX = 20;
-	private static final int DIM_MAT = 4;
+	private static final int MAX = 16;
+	private static final int DIM_MAT = 3;
 
 	private static VecteurDeCaracteres vecCaracteres = new VecteurDeCaracteres();
 	private static ListeMatricesChiffrement listeDeMatricesCandidates = null;

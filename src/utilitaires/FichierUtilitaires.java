@@ -69,14 +69,16 @@ public class FichierUtilitaires
      * @param nomDic le nom du fichier dictionnaire
      * @return un SortedSet des mots du dictionnaire ou null s'il n'y a pas de mot
      * dans le fichier.
+     * @author Henri Baillargeon
      */ 
      public static SortedSet<String> lireDictionnaire(File nomDic) {
-        FileInputStream inputStream = null;
+        FileInputStream inStream = null;
         Scanner scan = null;
         Set<String> set = new HashSet<>();
+        //puisque le buffer manquait de memoir, jai du utiliser l'utilitaire Scanner
         try {
-            inputStream = new FileInputStream(nomDic);
-            scan = new Scanner(inputStream, "UTF-8");
+            inStream = new FileInputStream(nomDic);
+            scan = new Scanner(inStream, "UTF-8");
             while (scan.hasNextLine()) {
                 set.add(scan.nextLine());
             }
@@ -90,9 +92,9 @@ public class FichierUtilitaires
 
         } finally {
 
-            if (inputStream != null) {
+            if (inStream != null) {
                 try {
-                    inputStream.close();
+                    inStream.close();
 
                 } catch (IOException e) {
                     e.printStackTrace();

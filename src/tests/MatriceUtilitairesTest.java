@@ -5,6 +5,10 @@ import org.junit.Test;
 import utilitaires.MatriceUtilitaires;
 import static org.junit.Assert.*;
 
+/**
+ * @author Henri Baillargeon
+ */
+
 public class MatriceUtilitairesTest {
     int[][] mat1,mat2,mat3,mat4, mat5, mat6;
 
